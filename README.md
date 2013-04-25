@@ -4,6 +4,8 @@ Go-Static-Forever
 
 *Serve files that never change*
 
+[![Build Status](https://travis-ci.org/ant0ine/go-static-forever.png?branch=master)](https://travis-ci.org/ant0ine/go-static-forever)
+
 If you can put a version string (commitish for instance) in the path of your
 static files, then the content served by the corresponding URLs is guaranteed
 to never change. A whole set of optimisations become possible.
