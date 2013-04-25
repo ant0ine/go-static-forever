@@ -5,11 +5,11 @@
 // to never change. A whole set of optimisations become possible.
 //
 // * If the request contains If-Modified-Since, return 304 without checking anything
-
+//
 // * Set the Expires and Last-Modified headers to <forever>
-
+//
 // * Set the Cache-Control header to "public; max-age=<forever>; s-maxage=<forever>"
-
+//
 // * Set the Etag header to the full file path ? TODO
 //
 // This handler is implemented as a wrapper around http.FileServer, and when the
