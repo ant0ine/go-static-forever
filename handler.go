@@ -98,36 +98,35 @@ func (self *staticHandler) ServeHTTP(origWriter http.ResponseWriter, origRequest
 		return
 	}
 
-        // Provide writer wrapper to write the custom headers only when the response code is 200
-        writer := &responseWriter{
-                origWriter,
-                self,
-                false,
-        }
+	// Provide writer wrapper to write the custom headers only when the response code is 200
+	writer := &responseWriter{
+		origWriter,
+		self,
+		false,
+	}
 
 	self.fileHandler.ServeHTTP(writer, origRequest)
 }
 
-
 // Inherit from an object implementing the http.ResponseWriter interface
 type responseWriter struct {
 	http.ResponseWriter
-        handler *staticHandler
+	handler     *staticHandler
 	wroteHeader bool
 }
 
 // Overloading of the http.ResponseWriter method.
 func (self *responseWriter) WriteHeader(code int) {
-        if code == 200 {
-                // Cache forever
-                self.Header().Set("Expires", self.handler.foreverHttpDate)
-                self.Header().Set("Last-Modified", self.handler.foreverHttpDate)
-                self.Header().Set("Cache-Control", fmt.Sprintf(
-                        "public; max-age=%d; s-maxage=%d",
-                        self.handler.deltaSeconds,
-                ))
-                // TODO Set the Etag header to the full file path ?
-        }
+	if code == 200 {
+		// Cache forever
+		self.Header().Set("Expires", self.handler.foreverHttpDate)
+		self.Header().Set("Last-Modified", self.handler.foreverHttpDate)
+		self.Header().Set("Cache-Control", fmt.Sprintf(
+			"public; max-age=%d; s-maxage=%d",
+			self.handler.deltaSeconds,
+		))
+		// TODO Set the Etag header to the full file path ?
+	}
 	self.ResponseWriter.WriteHeader(code)
 	self.wroteHeader = true
 }
@@ -139,4 +138,3 @@ func (self *responseWriter) Write(b []byte) (int, error) {
 	}
 	return self.ResponseWriter.Write(b)
 }
-

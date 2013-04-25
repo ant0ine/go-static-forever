@@ -14,7 +14,7 @@ func codeIs(t *testing.T, r *httptest.ResponseRecorder, expectedCode int) {
 }
 
 func TestWrongVersion(t *testing.T) {
-        // wring version string, expect a 404
+	// wring version string, expect a 404
 
 	handler := NewStaticHandler(
 		http.Dir("."),
@@ -41,7 +41,7 @@ func TestWrongVersion(t *testing.T) {
 }
 
 func TestDevelopement(t *testing.T) {
-        // right version string, expect a 200
+	// right version string, expect a 200
 
 	handler := NewStaticHandler(
 		http.Dir("."),
@@ -68,7 +68,7 @@ func TestDevelopement(t *testing.T) {
 }
 
 func TestFirstRequest(t *testing.T) {
-        // expect a 200 with all the custom headers set
+	// expect a 200 with all the custom headers set
 
 	handler := NewStaticHandler(
 		http.Dir("."),
@@ -102,7 +102,7 @@ func TestFirstRequest(t *testing.T) {
 }
 
 func TestSecondRequest(t *testing.T) {
-        // sent with If-Modified-Since, expect a 304
+	// sent with If-Modified-Since, expect a 304
 
 	handler := NewStaticHandler(
 		http.Dir("."),
@@ -122,7 +122,7 @@ func TestSecondRequest(t *testing.T) {
 		URL:    urlObj,
 	}
 	r.Header = http.Header{}
-        r.Header.Set("If-Modified-Since", "Sat, 01 Apr 2113 04:15:01 GMT")
+	r.Header.Set("If-Modified-Since", "Sat, 01 Apr 2113 04:15:01 GMT")
 
 	recorder := httptest.NewRecorder()
 
