@@ -4,10 +4,13 @@
 // static files, then the content served by the corresponding URLs is guaranteed
 // to never change. A whole set of optimisations become possible.
 //
-// * Set the Expires and Last-Modified headers to <forever>
-// * Set the Cache-Control header to "public; max-age=<forever>; s-maxage=<forever>"
-// * Set the Etag header to the full file path ? TODO
 // * If the request contains If-Modified-Since, return 304 without checking anything
+
+// * Set the Expires and Last-Modified headers to <forever>
+
+// * Set the Cache-Control header to "public; max-age=<forever>; s-maxage=<forever>"
+
+// * Set the Etag header to the full file path ? TODO
 //
 // This handler is implemented as a wrapper around http.FileServer, and when the
 // isDevelopment flag is set, http.FileServer is used directly.
@@ -22,10 +25,10 @@
 //        )
 //
 //        handler := forever.NewStaticHandler(
-//                http.Dir("/static/"),
-//                "1234567" // find the commitish here
-//                nil,
-//                false,
+//                http.Dir("/static/"),   // FileSytem to serve
+//                "1234567"               // version string, like a commitish for instance
+//                nil,                    // "forever duration" default to 100 years
+//                false,                  // isDevelopement
 //        )
 //
 //        http.ListenAndServe(":8080", &handler)
