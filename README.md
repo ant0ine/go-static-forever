@@ -10,11 +10,11 @@ If you can put a version string (commitish for instance) in the path of your
 static files, then the content served by the corresponding URLs is guaranteed
 to never change. A whole set of optimisations become possible.
 
-* If the request contains If-Modified-Since, return 304 without checking anything
+* If the request contains `If-Modified-Since`, return 304 without checking anything
 
-* Set the Expires and Last-Modified headers to <forever>
+* Set the Expires and Last-Modified headers to `forever`
 
-* Set the Cache-Control header to "public; max-age=<forever>; s-maxage=<forever>"
+* Set the Cache-Control header to `public; max-age=<forever>; s-maxage=<forever>`
 
 * Set the Etag header to the full file path ? TODO
 
