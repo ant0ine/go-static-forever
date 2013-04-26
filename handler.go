@@ -136,6 +136,7 @@ func (self *responseWriter) WriteHeader(code int) {
 		self.Header().Set("Cache-Control", fmt.Sprintf(
 			"public; max-age=%d; s-maxage=%d",
 			self.handler.deltaSeconds,
+			self.handler.deltaSeconds,
 		))
 		// TODO Set the Etag header to the full file path ?
 	}
