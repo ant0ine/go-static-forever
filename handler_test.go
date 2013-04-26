@@ -99,6 +99,16 @@ func TestFirstRequest(t *testing.T) {
 	if expires == "" {
 		t.Errorf("Expires expected, got: %s", expires)
 	}
+
+	control := recorder.HeaderMap.Get("Cache-Control")
+	if control != "public; max-age=31536000; s-maxage=31536000" {
+		t.Errorf("Cache-Control public; max-age=31536000; s-maxage=31536000 expected, got: %s", control)
+	}
+
+	last := recorder.HeaderMap.Get("Last-Modified")
+	if last != "Thu, 01 Jan 1970 00:00:00 GMT" {
+		t.Errorf("Last-Modified Thu, 01 Jan 1970 00:00:00 GMT expected, got: %s", last)
+	}
 }
 
 func TestSecondRequest(t *testing.T) {
