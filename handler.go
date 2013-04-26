@@ -28,7 +28,7 @@
 //                handler := forever.NewStaticHandler(
 //                        http.Dir("/static/"),   // FileSytem to serve
 //                        "1234567",              // version string, like a commitish for instance
-//                        nil,                    // "forever duration" default to one year
+//                        nil,                    // "forever duration", defaults to one year
 //                        false,                  // isDevelopement
 //                )
 //
@@ -56,7 +56,7 @@ type staticHandler struct {
 // borrowed from net/http/server.go
 const timeFormat = "Mon, 02 Jan 2006 15:04:05 GMT"
 
-// foreverDuration default to one year.
+// foreverDuration defaults to one year.
 func NewStaticHandler(
 	root http.FileSystem,
 	version string,
