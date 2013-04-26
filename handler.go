@@ -12,8 +12,6 @@
 //
 // * Set the `Last-Modified` headers to `<origin>` (`<origin>` being 1970)
 //
-// * Set the `Etag` header to the full file path ? TODO
-//
 // This handler is implemented as a wrapper around http.FileServer, and when the
 // isDevelopment flag is set, http.FileServer is used directly.
 //
@@ -138,7 +136,6 @@ func (self *responseWriter) WriteHeader(code int) {
 			self.handler.deltaSeconds,
 			self.handler.deltaSeconds,
 		))
-		// TODO Set the Etag header to the full file path ?
 	}
 	self.ResponseWriter.WriteHeader(code)
 	self.wroteHeader = true

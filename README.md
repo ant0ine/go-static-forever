@@ -18,8 +18,6 @@ to never change. A whole set of optimisations become possible.
 
 * Set the `Last-Modified` headers to `<origin>` (`<origin>` being 1970)
 
-* Set the `Etag` header to the full file path ? *TODO*
-
 This handler is implemented as a wrapper around http.FileServer, and when the
 isDevelopment flag is set, http.FileServer is used directly.
 
