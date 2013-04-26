@@ -51,7 +51,7 @@ type staticHandler struct {
 }
 
 // borrowed from net/http/server.go
-const TimeFormat = "Mon, 02 Jan 2006 15:04:05 GMT"
+const timeFormat = "Mon, 02 Jan 2006 15:04:05 GMT"
 
 // foreverDuration default to 100 years.
 func NewStaticHandler(
@@ -68,7 +68,7 @@ func NewStaticHandler(
 
 	deltaSeconds := int(foreverDuration.Seconds())
 	forever := time.Now().Add(*foreverDuration)
-	foreverHttpDate := forever.Format(TimeFormat)
+	foreverHttpDate := forever.Format(timeFormat)
 
 	prefix := "/" + version
 
