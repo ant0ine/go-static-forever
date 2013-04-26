@@ -62,6 +62,8 @@ func NewStaticHandler(
 
 	// set the default
 	if foreverDuration == nil {
+                // "servers SHOULD NOT send Expires dates more than one year in the future."
+                // http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21
 		dur := time.Duration(365 * 86400 * time.Second)
 		foreverDuration = &dur
 	}
