@@ -42,7 +42,7 @@ Example
     handler := forever.NewStaticHandler(
             http.Dir("/static/"),   // FileSytem to serve
             "1234567"               // version string, like a commitish for instance
-            nil,                    // "forever duration" default to 100 years
+            nil,                    // "forever duration" default to one year
             false,                  // isDevelopement
     )
 
