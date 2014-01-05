@@ -61,3 +61,4 @@ Copyright (c) 2013 Antoine Imbert
 [MIT License](https://github.com/ant0ine/go-static-forever/blob/master/LICENSE)
 
 
+[![Analytics](https://ga-beacon.appspot.com/UA-309210-4/go-static-forever/readme)](https://github.com/igrigorik/ga-beacon)
