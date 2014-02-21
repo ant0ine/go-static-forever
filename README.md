@@ -33,23 +33,25 @@ This package is "go-gettable", just do:
 Example
 -------
 
-        package main
+~~~ go
+package main
 
-        import(
-                "github.com/ant0ine/go-static-forever"
-                "net/http"
+import(
+        "github.com/ant0ine/go-static-forever"
+        "net/http"
+)
+
+func main() {
+        handler := forever.NewStaticHandler(
+                http.Dir("/static/"),   // FileSytem to serve
+                "1234567",              // version string, like a commitish for instance
+                nil,                    // "forever duration", defaults to one year
+                false,                  // isDevelopement
         )
 
-        func main() {
-                handler := forever.NewStaticHandler(
-                        http.Dir("/static/"),   // FileSytem to serve
-                        "1234567",              // version string, like a commitish for instance
-                        nil,                    // "forever duration", defaults to one year
-                        false,                  // isDevelopement
-                )
-
-                http.ListenAndServe(":8080", handler)
-        }
+        http.ListenAndServe(":8080", handler)
+}
+~~~
 
 Documentation
 -------------
